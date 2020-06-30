@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="page-head">
+      <h1>DragNDrop</h1>
+    </div>
+    <MainColumns />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MainColumns from './components/MainColumns.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    MainColumns
+  },
 }
 </script>
 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
+
+.page-head {
+  text-align: center;
+  border-bottom: 5px solid black;
+}
+
+.column-head {
+  text-align: center;
+  border-bottom: 5px solid black;
+}
+
+body {
+  margin: 0;
+}
+
 </style>
