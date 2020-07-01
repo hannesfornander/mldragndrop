@@ -56,11 +56,25 @@ const getters = {
     selectedLayers: state => state.selectedLayers,
     availableLayers: state => state.availableLayers,
     selectedLayer: state => {
-        return state.availableLayers.find(layer => layer.selected)
+        let layer = state.availableLayers.find(layer => layer.selected);
+        if (!layer) {
+            layer = state.selectedLayers.find(layer => layer.selected);
+        }
+        return layer;
     }
 }
 
-const actions = {}
+const actions = {
+    selectLayer({ commit }, layer) {
+        commit('selectLayer', layer)
+    },
+    deleteLayer({ commit }, index) {
+        commit('deleteLayer', index)
+    },
+    updateSelectedLayers({ commit }, selectedLayers) {
+        commit('updateSelectedLayers', selectedLayers)
+    }
+}
 
 const mutations = {
     selectLayer(state, layer) {
@@ -71,6 +85,12 @@ const mutations = {
             state.selectedLayers[i].selected = false;
         }
         layer.selected = true;
+    },
+    updateSelectedLayers(state, selectedLayers) {
+        state.selectedLayers = selectedLayers;
+    },
+    deleteLayer(state, index) {
+        state.selectedLayers.splice(index, 1);
     }
 }
 

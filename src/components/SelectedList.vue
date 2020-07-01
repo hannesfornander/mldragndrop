@@ -1,9 +1,9 @@
 <template>
-    <draggable v-model="selectedLayers" :options="clonedLayerOptions">
+    <draggable v-model="layerList" :options="clonedLayerOptions">
         <transition-group type="transition" name="selected-list">
-            <div class="sortable" v-for="(layer, index) in selectedLayers" :key="uuid(layer)">
+            <div class="sortable" v-for="(layer, index) in layerList" :key="uuid(layer)">
                 <div class="layer-name" @click="selectLayer(layer)">{{layer.name}}</div>
-                <div class="delete-btn" @click="deleteItem(index)">X</div>
+                <div class="delete-btn" @click="deleteLayer(index)">X</div>
             </div>
         </transition-group>
     </draggable>
@@ -11,14 +11,24 @@
 
 <script>
 import draggable from 'vuedraggable'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'SelectedList',
     components: {
         draggable
     },
-    computed: mapGetters(['selectedLayers']),
+    computed: {
+        ...mapGetters(['selectedLayers']),
+        layerList: {
+            get() {
+                return this.selectedLayers
+            },
+            set(selectedLayers) {
+                this.updateSelectedLayers(selectedLayers)
+            }
+        }
+    },
     data() {
         return {
             clonedLayerOptions: {
@@ -27,15 +37,7 @@ export default {
         }
     },
     methods: {
-        selectLayer(layer) {
-            for (let i = 0; i < this.selectedLayers.length; i++) {
-                this.selectedLayers[i].selected = false;
-            }
-            layer.selected = true;
-        },
-        deleteItem(index) {
-            this.selectedLayers.splice(index, 1);
-        },
+        ...mapActions(['selectLayer', 'deleteLayer', 'updateSelectedLayers']),
         uuid(e) {
             if (e.uid) return e.uid;
             const key = Math.random().toString(16).slice(2);
@@ -49,12 +51,15 @@ export default {
 
 <style scoped>
 .sortable {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    background-color: rgb(75, 66, 157);
     width: 200px;
     height: 50px;
     border: 2px solid black;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+    border-radius: 3px;
     cursor: pointer;
+    margin: 10px auto;
 }
 .layer-name {
     background-color: rgb(66, 206, 157);

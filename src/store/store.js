@@ -8,12 +8,12 @@ export const store = new Vuex.Store({
         
     },
     mutations: {
-        selectLayer(layer) {
+        /*selectLayer(layer) {
             for (let i = 0; i < this.availableLayers.length; i++) {
                 this.availableLayers[i].selected = false;
             }
             layer.selected = true;
-        },
+        },*/
     },
     getters: {
         

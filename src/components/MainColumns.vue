@@ -24,7 +24,7 @@ export default {
 <style scoped>
 .main-columns {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     min-height: 1000px;
 }
 </style>

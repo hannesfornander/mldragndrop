@@ -10,7 +10,7 @@
 
 <script>
 import draggable from 'vuedraggable'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'LayerList',
@@ -22,18 +22,16 @@ export default {
         return {
             availableLayerOptions: {
                 group: {
-                name: "layers",
-                pull: "clone",
-                put: false
+                    name: "layers",
+                    pull: "clone",
+                    put: false
                 },
                 sort: false
             }
         }
     },
     methods: {
-        selectLayer(layer) {
-            this.$store.commit('select', layer)
-        },
+        ...mapActions(['selectLayer']),
         handleClone (item) {
             // Create a fresh copy of item
             let cloneMe = JSON.parse(JSON.stringify(item));
@@ -55,11 +53,12 @@ export default {
 
 <style scoped>
 .sortable {
-    background-color: rgb(66, 206, 157);
+    background-color: rgb(75, 66, 157);
     width: 200px;
     height: 50px;
     border: 2px solid black;
+    border-radius: 3px;
     cursor: pointer;
-    margin: auto;
+    margin: 10px auto;
 }
 </style>
