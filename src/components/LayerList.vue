@@ -1,21 +1,21 @@
 <template>
     <draggable v-model="availableLayers" :options="availableLayerOptions" :clone="handleClone">
         <transition-group type="transition" name="layer-list">
-            <div class="sortable" :key="uuid(layer)" v-for="layer in availableLayers" @click="selectLayer(layer)">
-                {{layer.name}}
-            </div>
+            <LayerItem :key="uuid(layer)" v-for="layer in availableLayers" @click="selectLayer(layer)" :layer="layer" />
         </transition-group>
     </draggable>
 </template>
 
 <script>
+import LayerItem from './LayerItem.vue'
 import draggable from 'vuedraggable'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'LayerList',
     components: {
-        draggable
+        draggable,
+        LayerItem,
     },
     computed: mapGetters(['availableLayers']),
     data() {
@@ -52,13 +52,4 @@ export default {
 </script>
 
 <style scoped>
-.sortable {
-    background-color: rgb(75, 66, 157);
-    width: 200px;
-    height: 50px;
-    border: 2px solid black;
-    border-radius: 3px;
-    cursor: pointer;
-    margin: 10px auto;
-}
 </style>
