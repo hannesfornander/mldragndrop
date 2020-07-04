@@ -1,18 +1,21 @@
 <template>
-    <div class="sortable">
+    <div class="layer-item" @click="selectLayer(layer)">
         {{layer.name}}
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
     name: 'LayerItem',
-    props: ['layer']
+    props: ['layer'],
+    methods: mapActions(['selectLayer']),
 }
 </script>
 
 <style scoped>
-.sortable {
+.layer-item {
     background-color: rgb(157, 115, 66);
     border: 2px solid rgb(66, 206, 157);
     width: 200px;
@@ -22,7 +25,7 @@ export default {
     margin: 10px auto;
 }
 
-.sortable:hover {
+.layer-item:hover {
     border: 2px solid rgb(157, 115, 66);
 }
 </style>

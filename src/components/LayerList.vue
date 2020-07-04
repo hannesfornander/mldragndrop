@@ -1,7 +1,7 @@
 <template>
     <draggable v-model="availableLayers" :options="availableLayerOptions" :clone="handleClone">
         <transition-group type="transition" name="layer-list">
-            <LayerItem :key="uuid(layer)" v-for="layer in availableLayers" @click="selectLayer(layer)" :layer="layer" />
+            <LayerItem v-for="layer in availableLayers" :key="uuid(layer)" :layer="layer" />
         </transition-group>
     </draggable>
 </template>
@@ -9,13 +9,13 @@
 <script>
 import LayerItem from './LayerItem.vue'
 import draggable from 'vuedraggable'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
     name: 'LayerList',
     components: {
-        draggable,
         LayerItem,
+        draggable,
     },
     computed: mapGetters(['availableLayers']),
     data() {
@@ -31,7 +31,6 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['selectLayer']),
         handleClone (item) {
             // Create a fresh copy of item
             let cloneMe = JSON.parse(JSON.stringify(item));

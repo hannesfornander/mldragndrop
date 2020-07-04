@@ -16,7 +16,7 @@ export default {
 .parameter-item {
     margin-bottom: 5px;
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 1fr 1fr;
 }
 .parameter-item .parameter-name {
     text-align: right;
