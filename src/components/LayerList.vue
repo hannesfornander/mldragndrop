@@ -1,5 +1,5 @@
 <template>
-    <draggable v-model="availableLayers" :options="availableLayerOptions" :clone="handleClone">
+    <draggable v-model="availableLayers" v-bind="availableLayerOptions" :clone="handleClone">
         <transition-group type="transition" name="layer-list">
             <LayerItem v-for="layer in availableLayers" :key="uuid(layer)" :layer="layer" />
         </transition-group>

@@ -1,6 +1,6 @@
 <template>
-    <draggable v-model="layerList" :options="clonedLayerOptions">
-        <transition-group type="transition" name="selected-list">
+    <draggable v-model="layerList" v-bind="clonedLayerOptions">
+        <transition-group type="transition" class="selected-list" name="selected-list" tag="div">
             <SelectedLayerItem v-for="(layer, index) in layerList" :key="uuid(layer)" :layer="layer" :index="index" />
         </transition-group>
     </draggable>
@@ -49,4 +49,17 @@ export default {
 </script>
 
 <style scoped>
+.selected-footer, .selected-header {
+    background-color: pink;
+    border: 2px solid white;
+    width: 200px;
+    height: 50px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 10px auto;
+}
+
+.selected-list {
+    min-height: 50px;
+}
 </style>

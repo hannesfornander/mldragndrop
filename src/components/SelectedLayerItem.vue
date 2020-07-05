@@ -19,7 +19,7 @@ export default {
 .layer-item {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    background-color: rgb(157, 115, 66);
+    background-color: pink;
     border: 2px solid white;
     width: 200px;
     height: 50px;
@@ -29,21 +29,21 @@ export default {
 }
 
 .layer-item:hover {
-    border: 2px solid rgb(157, 115, 66);
+    border: 2px solid pink;
 }
 
 .layer-name {
-    background-color: rgb(157, 115, 66);
+    background-color: pink;
 }
 
 .delete-btn {
-    background-color: rgb(157, 115, 66);
+    background-color: pink;
     color: black;
 }
 
 .delete-btn:hover {
     background-color: black;
-    color: rgb(157, 115, 66);
+    color: pink;
 }
 
 /*.selected-list-move {

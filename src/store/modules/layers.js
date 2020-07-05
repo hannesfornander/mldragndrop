@@ -1,6 +1,6 @@
 
 const state = {
-    selectedLayers: [{name: 'Drag here'}],
+    selectedLayers: [],
     availableLayers: [
         {
         name: 'Dense',
@@ -47,7 +47,7 @@ const state = {
             {pName: 'padding', pValue: 'valid'},
             {pName: 'data_format', pValue: 'None'}
         ],
-        selected: true
+        selected: false
         }
     ]
 }
@@ -59,6 +59,9 @@ const getters = {
         let layer = state.availableLayers.find(layer => layer.selected);
         if (!layer) {
             layer = state.selectedLayers.find(layer => layer.selected);
+        }
+        if (!layer) {
+            return false;
         }
         return layer;
     }

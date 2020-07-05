@@ -16,7 +16,7 @@ export default {
 
 <style scoped>
 .layer-item {
-    background-color: rgb(157, 115, 66);
+    background-color: pink;
     border: 2px solid rgb(66, 206, 157);
     width: 200px;
     height: 50px;
@@ -26,6 +26,6 @@ export default {
 }
 
 .layer-item:hover {
-    border: 2px solid rgb(157, 115, 66);
+    border: 2px solid pink;
 }
 </style>

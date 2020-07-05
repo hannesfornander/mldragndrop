@@ -3,24 +3,26 @@
         <div class="column-head">
             <h2>Parameters</h2>
         </div>
-        <div>
-            <ParameterInfo />
-        </div>
-        <div class="parameter-btns">
-            <button type="button">Avbryt</button>
-            <button type="button">Spara</button>
+        <div v-if="selectedLayer">
+            <ParameterInfo :selectedLayer="selectedLayer" />
+            <div class="parameter-btns">
+                <button type="button">Avbryt</button>
+                <button type="button">Spara</button>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 import ParameterInfo from './ParameterInfo.vue'
+import { mapGetters } from 'vuex'
 
 export default {
     name: 'ParameterColumn',
     components: {
         ParameterInfo
     },
+    computed: mapGetters(['selectedLayer']),
 }
 </script>
 
