@@ -19,6 +19,7 @@ export default {
     grid-template-columns: 1fr 1fr;
 }
 .parameter-item .parameter-name {
+    margin: auto 0px;
     text-align: right;
     padding-right: 5px; 
 }
@@ -26,5 +27,6 @@ export default {
     border: 2px solid black;
     border-radius: 5px;
     padding: 3px;
+    max-width: 50%;
 }
 </style>

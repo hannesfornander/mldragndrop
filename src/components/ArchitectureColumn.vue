@@ -3,7 +3,9 @@
         <div class="column-head">
             <h2>Architecture</h2>
         </div>
-        <SelectedList />
+        <div class="column-main">
+            <SelectedList />
+        </div>
     </div>
 </template>
 
@@ -20,6 +22,16 @@ export default {
 
 <style scoped>
 .architecture-column {
-    padding: 0 20px;
+    position: relative;
+}
+
+.column-head {
+    margin: 0 20px;
+}
+
+.parameter-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 </style>

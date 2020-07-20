@@ -1,10 +1,14 @@
 <template>
     <div class="parameter-column">
-        <div v-if="selectedAvailableLayer">
+        <div v-if="selectedLayer">
             <div class="column-head">
                 <h2>Parameters</h2>
             </div>
-            <ParameterInfo :selectedLayer="selectedAvailableLayer" />
+            <ParameterInfo :selectedLayer="selectedLayer" />
+            <div class="parameter-btns">
+                <button type="button">Avbryt</button>
+                <button type="button">Spara</button>
+            </div>
         </div>
     </div>
 </template>
@@ -18,7 +22,7 @@ export default {
     components: {
         ParameterInfo
     },
-    computed: mapGetters(['selectedAvailableLayer']),
+    computed: mapGetters(['selectedLayer']),
 }
 </script>
 

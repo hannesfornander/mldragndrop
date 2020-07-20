@@ -3,6 +3,19 @@ const state = {
     selectedLayers: [],
     availableLayers: [
         {
+        name: 'Input',
+        parameters: [
+            {pName: 'shape', pValue: 'None'},
+            {pName: 'batch_size', pValue: 'None'},
+            {pName: 'name', pValue: 'None'},
+            {pName: 'dtype', pValue: 'None'},
+            {pName: 'sparse', pValue: 'False'},
+            {pName: 'tensor', pValue: 'None'},
+            {pName: 'ragged', pValue: 'False'},
+        ],
+        selected: false
+        },
+        {
         name: 'Dense',
         parameters: [
             {pName: 'units', pValue: ''},
@@ -48,6 +61,13 @@ const state = {
             {pName: 'data_format', pValue: 'None'}
         ],
         selected: false
+        },
+        {
+        name: 'Flatten',
+        parameters: [
+            {pName: 'data_format', pValue: 'None'},
+        ],
+        selected: false
         }
     ]
 }
@@ -56,13 +76,13 @@ const getters = {
     selectedLayers: state => state.selectedLayers,
     availableLayers: state => state.availableLayers,
     selectedLayer: state => {
+        let layer = state.selectedLayers.find(layer => layer.selected);
+        if (!layer) return false;
+        return layer;
+    },
+    selectedAvailableLayer: state => {
         let layer = state.availableLayers.find(layer => layer.selected);
-        if (!layer) {
-            layer = state.selectedLayers.find(layer => layer.selected);
-        }
-        if (!layer) {
-            return false;
-        }
+        if (!layer) return false;
         return layer;
     }
 }

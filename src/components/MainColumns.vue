@@ -2,21 +2,21 @@
     <div class="main-columns">
         <LayerColumn />
         <ArchitectureColumn />
-        <ParameterColumn />
+        <PipelineColumn />
     </div>
 </template>
 
 <script>
 import LayerColumn from './LayerColumn.vue'
 import ArchitectureColumn from './ArchitectureColumn.vue'
-import ParameterColumn from './ParameterColumn.vue'
+import PipelineColumn from './PipelineColumn.vue'
 
 export default {
     name: 'MainColumns',
     components: {
         LayerColumn,
         ArchitectureColumn,
-        ParameterColumn
+        PipelineColumn
     },
 }
 </script>

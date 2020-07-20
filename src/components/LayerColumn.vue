@@ -3,7 +3,9 @@
         <div class="column-head">
             <h2>Layers</h2>
         </div>
-        <LayerList />
+        <div class="column-main">
+            <LayerList />
+        </div>
     </div>
 </template>
 
@@ -21,6 +23,16 @@ export default {
 <style scoped>
 .layer-column {
     background-color: rgb(66, 206, 157);
-    padding: 0 20px;
+    position: relative;
+}
+
+.column-head {
+    margin: 0 20px;
+}
+
+.parameter-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 </style>
